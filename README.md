@@ -1,16 +1,42 @@
-# supervision
 
-A new Flutter project.
+# Supervison
+
+
+## Features
+
+- **Group Creation**: Students or teachers can create a group. When other team members want to join they need a group unique ID to join the group. Each group gets some sub-features such as File Sharing, Task Assigning, Discussion Room and Attendacne both automated and manual. 
+
+- **Schedule**: Teachers can create supervisory meeting schedule with their assigned team. Student can finds their slot by searching their supervisor intial.  
+
+
+## Tech Stack
+
+- **Flutter**: Used to build the user interface (UI) and ensure a consistent experience across Android and iOS platforms.
+- **Firebase**: Provides backend services including Firestore for real-time database operations and Firebase Authentication for user authentication.
+- **TensorFlow Lite**: Integrated for implementing the FaceNet model on mobile devices, enabling real-time face recognition.
+- **Deep Learning**: FaceNet is used as the deep learning model for face recognition, facilitating accurate attendance tracking.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get started with the project, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. **Set up Firebase**:
+   - Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/).
+   - Add your Firebase configuration details to the Flutter project.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. **Run the Flutter app**:
+   - Connect a device or emulator.
+   - Run the app using Flutter CLI:
+     ```bash
+     flutter run
+     ```
+
+4. **Explore the functionalities**:
+   - Navigate through the app to explore attendance management, file sharing, chat features, task assignments, and scheduling.
+
