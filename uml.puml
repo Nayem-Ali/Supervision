@@ -1,0 +1,567 @@
+@startuml
+set namespaceSeparator ::
+
+class "supervision::log_in::forget_password.dart::forgetPassword" {
+  +TextEditingController emailController
+  -FirebaseAuth _auth
+  +GlobalKey<FormState> formKey
+  +Widget build()
+}
+
+"supervision::log_in::forget_password.dart::forgetPassword" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::log_in::forget_password.dart::forgetPassword" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"supervision::log_in::forget_password.dart::forgetPassword" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::log_in::forget_password.dart::forgetPassword"
+
+class "supervision::log_in::main_page.dart::MainPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::log_in::main_page.dart::MainPage"
+
+class "supervision::log_in::sign_in.dart::signIn" {
+  +State<signIn> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::log_in::sign_in.dart::signIn"
+
+class "supervision::log_in::sign_in.dart::_signInState" {
+  +TextEditingController email
+  +TextEditingController password
+  -FirebaseAuth _auth
+  -GlobalKey<FormState> _formKey
+  -bool _isTrue
+  +Widget build()
+}
+
+"supervision::log_in::sign_in.dart::_signInState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::log_in::sign_in.dart::_signInState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"supervision::log_in::sign_in.dart::_signInState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::log_in::sign_in.dart::_signInState"
+
+class "supervision::log_in::sign_up.dart::signUp" {
+  +State<signUp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::log_in::sign_up.dart::signUp"
+
+class "supervision::log_in::sign_up.dart::_signUpState" {
+  +TextEditingController nameController
+  +TextEditingController emailController
+  +TextEditingController phoneController
+  +TextEditingController initialController
+  +TextEditingController idController
+  +TextEditingController passwordController
+  +TextEditingController confirmPasswordController
+  -bool _supervisor
+  -bool _student
+  -bool _isEnable
+  -GlobalKey<FormState> _formKey
+  -FirebaseAuth _auth
+  -FirebaseFirestore _fireStore
+  +void createUser()
+  +Widget build()
+}
+
+"supervision::log_in::sign_up.dart::_signUpState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::log_in::sign_up.dart::_signUpState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"supervision::log_in::sign_up.dart::_signUpState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"supervision::log_in::sign_up.dart::_signUpState" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::log_in::sign_up.dart::_signUpState"
+
+class "supervision::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::main.dart::MyApp"
+
+class "supervision::pages::app_settings::settings.dart::Settings" {
+  +State<Settings> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::app_settings::settings.dart::Settings"
+
+class "supervision::pages::app_settings::settings.dart::_SettingsState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::app_settings::settings.dart::_SettingsState"
+
+class "supervision::pages::attendance::attendance_marking.dart::AttendanceMarkingPage" {
+  +List<dynamic> attendance
+  +State<AttendanceMarkingPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::attendance::attendance_marking.dart::AttendanceMarkingPage"
+
+class "supervision::pages::attendance::attendance_marking.dart::_AttendanceMarkingPageState" {
+  +Map<dynamic, int> attendanceCount
+  +TextEditingController markController
+  +GlobalKey<FormState> formKey
+  +int mark
+  +void initState()
+  +dynamic calculateAttendance()
+  +Widget build()
+}
+
+"supervision::pages::attendance::attendance_marking.dart::_AttendanceMarkingPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::pages::attendance::attendance_marking.dart::_AttendanceMarkingPageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::attendance::attendance_marking.dart::_AttendanceMarkingPageState"
+
+class "supervision::pages::attendance::attendance_view.dart::AttendanceView" {
+  +String groupId
+  +State<AttendanceView> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::attendance::attendance_view.dart::AttendanceView"
+
+class "supervision::pages::attendance::attendance_view.dart::_AttendanceViewState" {
+  +CollectionReference<Object?> collectionReference
+  +FirebaseFirestore fireStore
+  +List<dynamic> takenAttendance
+  +List<dynamic> dates
+  +int numberOfStudent
+  +void initState()
+  +dynamic getAttendance()
+  +Widget build()
+}
+
+"supervision::pages::attendance::attendance_view.dart::_AttendanceViewState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"supervision::pages::attendance::attendance_view.dart::_AttendanceViewState" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::attendance::attendance_view.dart::_AttendanceViewState"
+
+class "supervision::pages::attendance::attendence_page.dart::AttendancePage" {
+  +String groupId
+  +State<AttendancePage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::attendance::attendence_page.dart::AttendancePage"
+
+class "supervision::pages::attendance::attendence_page.dart::_AttendancePageState" {
+  +TextEditingController dateInputController
+  +String currentUser
+  +CollectionReference<Object?> collectionReference
+  +List<dynamic> attendanceList
+  +GlobalKey<FormState> formKey
+  +bool isSupervisor
+  +void initState()
+  +dynamic getAllStudents()
+  +dynamic provideAttendance()
+  +dynamic selectDate()
+  +Widget build()
+}
+
+"supervision::pages::attendance::attendence_page.dart::_AttendancePageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::pages::attendance::attendence_page.dart::_AttendancePageState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"supervision::pages::attendance::attendence_page.dart::_AttendancePageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::attendance::attendence_page.dart::_AttendancePageState"
+
+class "supervision::pages::chats::chat_page.dart::ChatPage" {
+  +String groupId
+  +State<ChatPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::chats::chat_page.dart::ChatPage"
+
+class "supervision::pages::chats::chat_page.dart::_ChatPageState" {
+  -TextEditingController _message
+  -ScrollController _scrollController
+  -FirebaseFirestore _firestore
+  +String currentUser
+  +CollectionReference<Object?> collectionReference
+  +String userName
+  +void initState()
+  +dynamic refresh()
+  +dynamic getUser()
+  +void onSendMessage()
+  +Widget build()
+  +Widget messageTile()
+}
+
+"supervision::pages::chats::chat_page.dart::_ChatPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::pages::chats::chat_page.dart::_ChatPageState" o-- "flutter::src::widgets::scroll_controller.dart::ScrollController"
+"supervision::pages::chats::chat_page.dart::_ChatPageState" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"supervision::pages::chats::chat_page.dart::_ChatPageState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::chats::chat_page.dart::_ChatPageState"
+
+class "supervision::pages::files::files_page.dart::FilesPage" {
+  +String groupId
+  +State<FilesPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::files::files_page.dart::FilesPage"
+
+class "supervision::pages::files::files_page.dart::_FilesPageState" {
+  +PlatformFile? pickedFile
+  +UploadTask? uploadTask
+  +Future<ListResult> futureFiles
+  +Dio dio
+  +double progress
+  +void initState()
+  +dynamic getListOfFiles()
+  +Future<dynamic> deleteFile()
+  +Future<void> downloadFile()
+  +Future<bool> requestPermission()
+  +Future<dynamic> uploadFile()
+  +Future<dynamic> selectFile()
+  +Widget build()
+}
+
+"supervision::pages::files::files_page.dart::_FilesPageState" o-- "file_picker::src::platform_file.dart::PlatformFile"
+"supervision::pages::files::files_page.dart::_FilesPageState" o-- "firebase_storage::firebase_storage.dart::UploadTask"
+"supervision::pages::files::files_page.dart::_FilesPageState" o-- "dio::src::dio.dart::Dio"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::files::files_page.dart::_FilesPageState"
+
+class "supervision::pages::initial_page.dart::InitialPage" {
+  +String groupId
+  +String groupName
+  +State<InitialPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::initial_page.dart::InitialPage"
+
+class "supervision::pages::initial_page.dart::_InitialPageState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::initial_page.dart::_InitialPageState"
+
+class "supervision::pages::tasks::task_view.dart::TaskPage" {
+  +String groupId
+  +_TaskPageState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::pages::tasks::task_view.dart::TaskPage"
+
+class "supervision::pages::tasks::task_view.dart::_TaskPageState" {
+  +List<dynamic>? taskList
+  +TextEditingController taskController
+  +TextEditingController dateInputController
+  +GlobalKey<FormState> formKey
+  +DateTime selectedDate
+  +CollectionReference<Object?> collectionReference
+  +String currentUser
+  +bool isSupervisor
+  +void initState()
+  +dynamic getAllTasks()
+  +dynamic addTask()
+  +dynamic updateTaskStatus()
+  -dynamic _showDialog()
+  +Widget build()
+}
+
+"supervision::pages::tasks::task_view.dart::_TaskPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::pages::tasks::task_view.dart::_TaskPageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"supervision::pages::tasks::task_view.dart::_TaskPageState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::pages::tasks::task_view.dart::_TaskPageState"
+
+class "supervision::profile::edit_profile_screen.dart::EditProfileScreen" {
+  +dynamic data
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::profile::edit_profile_screen.dart::EditProfileScreen"
+
+class "supervision::profile::firestore_services.dart::FirestoreServices" {
+  {static} +dynamic getUser()
+}
+
+class "supervision::profile::profile_controller.dart::ProfileController" {
+  +RxString profileImgPath
+  +String profileImageLink
+  +RxBool isloading
+  +TextEditingController nameController
+  +TextEditingController oldpassController
+  +TextEditingController newpassController
+  +TextEditingController emailController
+  +TextEditingController phoneController
+  -FirebaseAuth _auth
+  -FirebaseFirestore _firestore
+  +dynamic changeImage()
+  +dynamic uploadProfileImage()
+  +dynamic updateProfile()
+  +dynamic updatePass()
+  +dynamic changeAuthPassword()
+}
+
+"supervision::profile::profile_controller.dart::ProfileController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxString"
+"supervision::profile::profile_controller.dart::ProfileController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxBool"
+"supervision::profile::profile_controller.dart::ProfileController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::profile::profile_controller.dart::ProfileController" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"supervision::profile::profile_controller.dart::ProfileController" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "supervision::profile::profile_controller.dart::ProfileController"
+
+class "supervision::profile::profile_screen.dart::ProfileScreen" {
+  -FirebaseAuth _auth
+  +Widget build()
+}
+
+"supervision::profile::profile_screen.dart::ProfileScreen" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::profile::profile_screen.dart::ProfileScreen"
+
+class "supervision::schedule::meeting.dart::Meeting" {
+  +DateTime? from
+  +DateTime? to
+  +String? eventName
+  +bool isAllDay
+  +Color background
+}
+
+"supervision::schedule::meeting.dart::Meeting" o-- "dart::ui::Color"
+
+class "supervision::schedule::meeting_data_source.dart::MeetingDataSource" {
+  +DateTime getStartTime()
+  +DateTime getEndTime()
+  +bool isAllDay()
+  +Color getColor()
+  +String getSubject()
+}
+
+"syncfusion_flutter_calendar::src::calendar::appointment_engine::calendar_datasource.dart::CalendarDataSource" <|--"supervision::schedule::meeting_data_source.dart::MeetingDataSource"
+
+class "supervision::schedule::routine_page.dart::RoutinePage" {
+  +bool isSupervisor
+  +State<RoutinePage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::schedule::routine_page.dart::RoutinePage"
+
+class "supervision::schedule::routine_page.dart::_RoutinePageState" {
+  +PlatformFile? pickedFile
+  +String url
+  +GlobalKey<FormState> formKey
+  +TextEditingController superVisorInitialInput
+  +String superVisorInitial
+  +String currentUser
+  +void getFile()
+  +void initState()
+  +dynamic checkSupervisor()
+  +Future<dynamic> uploadFile()
+  +Future<dynamic> selectFile()
+  +Widget build()
+}
+
+"supervision::schedule::routine_page.dart::_RoutinePageState" o-- "file_picker::src::platform_file.dart::PlatformFile"
+"supervision::schedule::routine_page.dart::_RoutinePageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"supervision::schedule::routine_page.dart::_RoutinePageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::schedule::routine_page.dart::_RoutinePageState"
+
+class "supervision::schedule::schedule_page.dart::CalenderScreen" {
+  +State<CalenderScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::schedule::schedule_page.dart::CalenderScreen"
+
+class "supervision::schedule::schedule_page.dart::_CalenderScreenState" {
+  +TextEditingController superVisorInitialInput
+  +TextEditingController groupNameController
+  +TextEditingController dateInputController
+  +TextEditingController eventInputController
+  +TextEditingController durationInputController
+  +TextEditingController timeInputController
+  +CollectionReference<Object?> userCollectionReference
+  +CollectionReference<Object?> scheduleCollectionReference
+  +String currentUser
+  +GlobalKey<FormState> formKey
+  +bool isSupervisor
+  +String superVisorInitial
+  +DateTime selectedDate
+  +int selectedHour
+  +int selectedMin
+  +List<Meeting> meetings
+  +void initState()
+  +dynamic checkSupervisor()
+  +void setData()
+  +void getData()
+  -dynamic _showDialog()
+  +Widget build()
+}
+
+"supervision::schedule::schedule_page.dart::_CalenderScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::schedule::schedule_page.dart::_CalenderScreenState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"supervision::schedule::schedule_page.dart::_CalenderScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::schedule::schedule_page.dart::_CalenderScreenState"
+
+class "supervision::schedule::view_appointments.dart::ViewAppointments" {
+  +List<Meeting> meetings
+  +String initial
+  +State<ViewAppointments> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::schedule::view_appointments.dart::ViewAppointments"
+
+class "supervision::schedule::view_appointments.dart::_ViewAppointmentsState" {
+  +bool isComplete
+  +List<dynamic> allMeeting
+  +void initState()
+  +dynamic getAllMeetings()
+  +dynamic updateMeeting()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::schedule::view_appointments.dart::_ViewAppointmentsState"
+
+class "supervision::splash_screen::splash.dart::SplashScreen" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::splash_screen::splash.dart::SplashScreen"
+
+class "supervision::teacher::group_info.dart::GroupInfoPage" {
+  +String groupId
+  +String groupName
+  +State<GroupInfoPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::teacher::group_info.dart::GroupInfoPage"
+
+class "supervision::teacher::group_info.dart::_GroupInfoPageState" {
+  +String currentUser
+  +CollectionReference<Object?> groupCollectionReference
+  +CollectionReference<Object?> userCollectionReference
+  +List<dynamic>? groupsList
+  +List<dynamic>? membersList
+  +List<String>? memberName
+  +String admin
+  +bool isSupervisor
+  +void initState()
+  +dynamic getAllMembers()
+  +dynamic leaveGroup()
+  +dynamic deleteGroup()
+  +Widget build()
+}
+
+"supervision::teacher::group_info.dart::_GroupInfoPageState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::teacher::group_info.dart::_GroupInfoPageState"
+
+class "supervision::teacher::group_list.dart::GroupListBar" {
+  +State<GroupListBar> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::teacher::group_list.dart::GroupListBar"
+
+class "supervision::teacher::group_list.dart::_GroupListBarState" {
+  +TextEditingController textController
+  +String currentUser
+  +Map<String, dynamic>? groupMap
+  +Map<String, dynamic>? groupMap_third
+  +Map<String, dynamic>? groupMap_fourth
+  +Map<String, dynamic>? groupMap_thesis
+  +List<dynamic> groupsList
+  +GlobalKey<FormState> formKey
+  +bool isSupervisor
+  +void initState()
+  +dynamic checkSupervisor()
+  +dynamic getAllGroups()
+  +Future<bool> searchGroup()
+  +dynamic joinGroup()
+  -void _showSearchDialog()
+  +Widget build()
+}
+
+"supervision::teacher::group_list.dart::_GroupListBarState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::teacher::group_list.dart::_GroupListBarState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::teacher::group_list.dart::_GroupListBarState"
+
+class "supervision::teacher::group_register_page.dart::GroupRegisterPage" {
+  +State<GroupRegisterPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::teacher::group_register_page.dart::GroupRegisterPage"
+
+class "supervision::teacher::group_register_page.dart::_GroupRegisterPageState" {
+  +TextEditingController groupName
+  +GlobalKey<FormState> formKey
+  -String? _selectedProjectCategory
+  +String currentUser
+  +CollectionReference<Object?> groupCollection
+  +Future<dynamic> createGroup()
+  +Widget build()
+}
+
+"supervision::teacher::group_register_page.dart::_GroupRegisterPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"supervision::teacher::group_register_page.dart::_GroupRegisterPageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"supervision::teacher::group_register_page.dart::_GroupRegisterPageState" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::teacher::group_register_page.dart::_GroupRegisterPageState"
+
+class "supervision::teacher::home_screen.dart::HomeScreen" {
+  +State<HomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::teacher::home_screen.dart::HomeScreen"
+
+class "supervision::teacher::home_screen.dart::_HomeScreenState" {
+  +List<String> quotes
+  +String user
+  +DocumentSnapshot<Object?>? userData
+  +void initState()
+  +dynamic getUserInfo()
+  +Widget build()
+  +Widget forHome()
+}
+
+"supervision::teacher::home_screen.dart::_HomeScreenState" o-- "cloud_firestore::cloud_firestore.dart::DocumentSnapshot<Object>"
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::teacher::home_screen.dart::_HomeScreenState"
+
+class "supervision::teacher::setting.dart::ImagePage" {
+  +State<ImagePage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::teacher::setting.dart::ImagePage"
+
+class "supervision::teacher::setting.dart::_ImagePageState" {
+  +String? currentUser
+  +void initState()
+  +dynamic getCurrentUser()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::teacher::setting.dart::_ImagePageState"
+
+class "supervision::utility::bottom_navigation.dart::BottomNavigation" {
+  +State<BottomNavigation> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "supervision::utility::bottom_navigation.dart::BottomNavigation"
+
+class "supervision::utility::bottom_navigation.dart::_BottomNavigationState" {
+  -int _currentIndex
+  +List<Widget> tabs
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "supervision::utility::bottom_navigation.dart::_BottomNavigationState"
+
+class "supervision::utility::logo.dart::Logo" {
+  +double fontSize
+  +double height
+  +double width
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::utility::logo.dart::Logo"
+
+class "supervision::utility::notifications.dart::Notifications" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::utility::notifications.dart::Notifications"
+
+class "supervision::utility::reusable_button.dart::Button" {
+  +String buttonName
+  +dynamic Function() onPressed
+  +Widget build()
+}
+
+"supervision::utility::reusable_button.dart::Button" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::utility::reusable_button.dart::Button"
+
+class "supervision::utility::text_field.dart::textField" {
+  +String hint
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "supervision::utility::text_field.dart::textField"
+
+
+@enduml
