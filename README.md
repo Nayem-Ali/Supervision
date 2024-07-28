@@ -20,7 +20,7 @@
 <img src="https://github.com/user-attachments/assets/060af0b7-e3a5-46d3-b952-fce00843a7a3" alt="Home and Setup Group" width="200"/>
 
 <img src="https://github.com/user-attachments/assets/65343c66-1b50-438a-90d4-3d8b351c2110" alt="Calender and Appointments" width="200"/>
-
+<br>
 <img src="https://github.com/user-attachments/assets/0a388d3f-f954-428b-8f21-7f2d24e5129e" alt="Discussion and Files" width="200"/>
 
 <img src="https://github.com/user-attachments/assets/20c4c84b-4630-4d9b-ad47-3c5e473f5a34" alt="Task and Attendance" width="200"/>
