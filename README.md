@@ -16,6 +16,9 @@
 - **TensorFlow Lite**: Integrated for implementing the FaceNet model on mobile devices, enabling real-time face recognition.
 - **Deep Learning**: FaceNet is used as the deep learning model for face recognition, facilitating accurate attendance tracking.
 
+## Screenshorts
+![alt Homepage & Group Setup](https://drive.google.com/file/d/1cWvJ736R1q-LUMwENZP6DPcSi7_RYXOM/view?usp=drive_link)
+
 ## Getting Started
 
 To get started with the project, follow these steps:
