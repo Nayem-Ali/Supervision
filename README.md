@@ -17,7 +17,7 @@
 - **Deep Learning**: FaceNet is used as the deep learning model for face recognition, facilitating accurate attendance tracking.
 
 ## Screenshorts
-![alt Homepage & Group Setup](https://drive.google.com/file/d/1cWvJ736R1q-LUMwENZP6DPcSi7_RYXOM/view?usp=drive_link)
+![Homepage & Group Setup](https://drive.google.com/file/d/1cWvJ736R1q-LUMwENZP6DPcSi7_RYXOM/view?usp=drive_link)
 
 ## Getting Started
 
